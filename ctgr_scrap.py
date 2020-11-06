@@ -75,17 +75,24 @@ def ctgr_scrap(url, headers):
                     pass
 
                 if ctgr4_a is None:
-                    ctgr_list['ctgr1_nm'].append(ctgr1_nm)
-                    ctgr_list['ctgr1_no'].append(ctgr1_no)
-                    ctgr_list['ctgr2_nm'].append(ctgr2_nm)
-                    ctgr_list['ctgr2_no'].append(ctgr2_no)
-                    ctgr_list['ctgr3_nm'].append(ctgr3_nm)
-                    ctgr_list['ctgr3_no'].append(ctgr3_no)
-                    ctgr_list['ctgr4_nm'].append(None)
-                    ctgr_list['ctgr4_no'].append(None)
-                    ctgr_list['ctgr5_nm'].append(None)
-                    ctgr_list['ctgr5_no'].append(None)
-                    # print(ctgr1_nm, ctgr2_nm, ctgr3_nm)
+                    ctgr4_nm = None
+                    ctgr4_no = None
+                    ctgr5_nm = None
+                    ctgr5_no = None
+
+                    db.coupang_ctgr.insert_one({
+                        'ctgr1_nm': ctgr1_nm,
+                        'ctgr1_no': ctgr1_no,
+                        'ctgr2_nm': ctgr2_nm,
+                        'ctgr2_no': ctgr2_no,
+                        'ctgr3_nm': ctgr3_nm,
+                        'ctgr3_no': ctgr3_no,
+                        'ctgr4_nm': ctgr4_nm,
+                        'ctgr4_no': ctgr4_no,
+                        'ctgr5_nm': ctgr5_nm,
+                        'ctgr5_no': ctgr5_no,
+                    })
+                    print(ctgr1_nm, ctgr2_nm, ctgr3_nm, ctgr4_nm, ctgr5_nm)
                 elif ctgr4_a is not None:
                     url_ctgr5 = 'http://www.coupang.com/np/search/getFirstSubCategory'
                     params_ctgr5 = {
@@ -144,7 +151,7 @@ def ctgr_scrap(url, headers):
                                 'ctgr5_nm': ctgr5_nm,
                                 'ctgr5_no': ctgr5_no,
                             })
-                            # print(ctgr1_nm, ctgr2_nm, ctgr3_nm, ctgr4_nm, ctgr5_nm)
+                            print(ctgr1_nm, ctgr2_nm, ctgr3_nm, ctgr4_nm, ctgr5_nm)
                         elif ctgr5_a is not None:
                             url_ctgr5 = 'http://www.coupang.com/np/search/getFirstSubCategory'
                             params_ctgr5 = {
